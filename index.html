@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Event Maestro</h2>
+
+<input id="user" placeholder="Username">
+<input id="item" placeholder="Item">
+
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+<button onclick="purchase()">Purchase</button>
+<button onclick="summary()">Summary</button>
+
+<pre id="output" style="border:1px solid black; height:250px; width:500px; padding:10px;"></pre>
+
+<script>
+function show(data){
+ document.getElementById("output").textContent = data
+}
+
+function login(){
+ fetch("/login",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({user:user.value})
+ })
+ .then(r=>r.json())
+ .then(d=>show(JSON.stringify(d,null,2)))
+ .catch(e=>show("ERROR"))
+}
+
+function logout(){
+ fetch("/logout",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({user:user.value})
+ })
+ .then(r=>r.json())
+ .then(d=>show(JSON.stringify(d,null,2)))
+}
+
+function purchase(){
+ fetch("/purchase",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({user:user.value,item:item.value})
+ })
+ .then(r=>r.json())
+ .then(d=>show(JSON.stringify(d,null,2)))
+}
+
+function summary(){
+ fetch("/summary")
+ .then(r=>r.json())
+ .then(d=>show(JSON.stringify(d,null,2)))
+}
+</script>
+
+</body>
+</html>
