@@ -1,17 +1,14 @@
 {
-  "name": "awt",
+  "name": "todo-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for Todo List app with MongoDB",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.8.9"
   }
 }
